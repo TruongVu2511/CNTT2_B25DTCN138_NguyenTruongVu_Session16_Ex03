@@ -9,8 +9,6 @@ class Student(Base):
     full_name = Column(String(100), nullable=False)
     status = Column(String(20), default="ACTIVE")
 
-    # Quan hệ với Enrollment
     enrollments = relationship("Enrollment", back_populates="student")
 
-    # Quan hệ gián tiếp N-N với Course
     courses = relationship("Course", secondary="enrollments", back_populates="students")
